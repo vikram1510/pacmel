@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="scripts/app.js"></script>
+  <title>Pacman Game</title>
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <main>
+      <div class="start-menu">
+        <div class="winning">
+          <h2 class="you-win">YOU WIN</h2>
+          <p>Press 'P' start again</p>
+        </div>
+        <div class="stage-transition hide">
+          <div class="pacman-gif">
+            <img src="images/pacman.gif" alt="">
+          </div>
+          <h2 id="level">Stage 1</h2>
+        </div>
+        <div class="box">
+          <div class="select-option">
+            <div class="banner">
+              <span>P</span>
+              <span>A</span>
+              <span>C</span>
+              <span>M</span>
+              <span>A</span>
+              <span>N</span>
+            </div>
+            <ul>
+              <li><span class="selector"></span>
+                <p>Play Game</p>
+              </li>
+              <li><span></span>
+                <p>Choose Difficulty</p>
+              </li>
+            </ul>
+          </div>
+          <div class="difficulty">
+            <ul>
+              <li>Easy</li>
+              <li>Medium</li>
+              <li>Hard</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="game-over text">
+        <p>GAME OVER</p>
+        <p class="game-over-msg">Press 'P' to start again</p>
+      </div>
+
+      <div class="game-over overlay">
+      </div>
+
+      <div class="music">
+        <p id="music">Music</p>
+      </div>
+      <div class="game">
+
+      </div>
+
+      <div class="stats">
+        <ul class="lives">
+          <!-- <li>life1</li>
+          <li>life2</li>
+          <li>life3</li> -->
+        </ul>
+        <p id="levelLabel"></p>
+        <p>Score: <span id="score">0</span></p>
+      </div>
+
+    </main>
+  </div>
+</body>
+
+</html>

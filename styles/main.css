@@ -314,9 +314,11 @@ main {
 
 
 .pacman {
-  background-image: url("../images/pacman.gif");
+  background-image: url("../images/mel.GIF");
   background-repeat: no-repeat;
   background-size: contain;
+  /* height: 50px; */
+  /* width: 50px; */
 
 }
 

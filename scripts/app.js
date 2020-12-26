@@ -92,7 +92,7 @@ let lastKeyPressed = null, bufferMove = null, powerPillId = null
 // debug flag to show grid numbers
 const showNumbers = false
 
-const ghostSpeed = 15
+const ghostSpeed = 40
 let score = 0, scoreSpan
 
 // Difficulty level stored in local storage
@@ -517,7 +517,7 @@ function collision(ghost) {
       stage = 'gamePlay'
     }
 
-  }, 900)
+  }, 2000)
 }
 
 function gameOver(killerGhost){

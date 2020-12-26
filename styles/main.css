@@ -240,8 +240,8 @@ main {
 }
 
 .game {
-  max-height: 600px;
-  max-width: 600px;
+  max-height: 700px;
+  max-width: 700px;
   background-color: black;
   display: flex;
   flex-wrap: wrap;
@@ -365,7 +365,7 @@ main {
 .pill {
   background-image: url("../images/korean.GIF ");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .ghost-kill{

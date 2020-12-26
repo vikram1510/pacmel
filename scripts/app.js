@@ -77,12 +77,14 @@ const ghostMoves = ['left','up','right','down']
 //This array describes the positions of all the dots in the grid (can be generated using level editor)
 const level1Dots = [21, 41, 61, 81, 101, 121, 141, 161, 181, 201, 221, 241, 261, 281, 301, 321, 341, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 358, 338, 318, 298, 278, 258, 238, 218, 198, 178, 158, 138, 118, 98, 78, 58, 38, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 43, 63, 83, 103, 123, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 159, 142, 140, 56, 76, 96, 116, 136, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 66, 67, 68, 71, 72, 73, 106, 107, 108, 111, 112, 113, 344, 324, 304, 305, 306, 307, 327, 347, 355, 335, 315, 314, 313, 312, 332, 352, 262, 263, 264, 244, 224, 225, 226, 227, 247, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 253, 233, 213, 193, 173, 206, 186, 166, 217, 216, 215, 214, 170, 190, 210, 230, 250]
 const level2Dots = [56, 43, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 152, 153, 154, 155, 156, 157, 158, 138, 118, 98, 78, 58, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 25, 24, 23, 22, 21, 41, 61, 81, 101, 121, 161, 181, 201, 221, 241, 261, 281, 301, 321, 341, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 358, 338, 318, 298, 278, 258, 238, 218, 198, 178, 217, 216, 215, 214, 213, 212, 211, 210, 209, 208, 206, 205, 204, 203, 202, 184, 164, 195, 175, 168, 188, 151, 171, 191, 207, 228, 248, 268, 288, 308, 328, 348, 351, 331, 311, 291, 271, 251, 231, 131, 111, 91, 71, 51, 48, 68, 88, 108, 128, 26, 46, 66, 86, 106, 105, 104, 103, 83, 63, 53, 73, 93, 113, 114, 115, 116, 96, 76, 257, 256, 255, 254, 253, 273, 293, 313, 333, 353, 355, 335, 315, 316, 317, 304, 324, 344, 303, 302, 242, 243, 244, 245, 246, 266, 286, 306, 326, 346, 240, 259, 119, 100]
+const level3Dots = [351,371,42,62,82,122,142,162,182,202,222,43,44,45,65,85,105,125,145,165,185,186,206,226,225,205,46,66,86,106,126,146,166,47,48,69,49,89,109,129,149,169,189,209,229,51,71,91,111,131,151,171,191,211,231,232,233,234,214,194,174,154,134,114,94,74,54,235,236,237,217,197,177,157,137,117,97,77,57,58,59,41,40,249,269,270,374,354,334,333,332,331,330,329,328,327,326,325,324,323,322,321,320,335,336,337,338,339,242,102,262,282,302,251,271,372,373,356,376,377,378,379,349,369,368,367,366,346,343,363,362,361,360,317,297,277,278,279,260,261,289,309]
 
 const level1  = new Level(1, level1Dots, [305, 313, 210, 107], { pacman: 30, ghosts: [67, 72, 375] })
 const level2  = new Level(2, level2Dots, [304, 315, 142, 157], { pacman: 369, ghosts: [148, 149, 150] })
+const level3  = new Level(3, level3Dots, [252, 269, 214, 217, 349, 356,322], { pacman: 169, ghosts: [42, 57] })
 
 // all levels stored in array
-const levels = [level1, level2]
+const levels = [level1, level2, level3]
 let currentLevel = 1
 
 let lastKeyPressed = null, bufferMove = null, powerPillId = null
@@ -108,7 +110,6 @@ const ghostAni = new Ghost('ani', 'weak-ani')
 const ghostPrabs = new Ghost('prabs', 'weak-prabs')
 const ghostVik = new Ghost('vik', 'weak-vik')
 let ghosts = [ghostVik, ghostPrags, ghostBhu1]
-ghosts.forEach(g => console.log(g.weakClass))
 
 // This stage variable is changed throughout the game (e.g. gamePlay, gameOver etc.)
 let stage = 'gameStart Menu'
@@ -638,6 +639,7 @@ function gameStart(keyCode){
 
 // set up a new game
 function newGame(){
+  ghosts = [ghostVik, ghostPrags, ghostBhu1]
   const gameOverElements = document.querySelectorAll('.game-over')
   const gameOverMsg = document.querySelector('.game-over-msg')
   gameOverMsg.style.display = 'none'
@@ -670,6 +672,9 @@ function winLevel(){
   stopCharacters()
   if (currentLevel === 2){
     ghosts = [ghostAni, ghostJaren, ghostLaxmi]
+  }
+  if (currentLevel === 3){
+    ghosts = [ghostAsmi, ghostPrabs]
   }
   setTimeout(() => {
     cells[pacman.pos].style.transform = 'translateY(-750px)'
@@ -840,8 +845,14 @@ function pickBestMove(possibleMoves, currentPos){
 
 function levelEditor() {
   let select = false
-  const array = new Set()
+  const existing = []
+  const array = new Set(existing)
   const cells = document.querySelectorAll('.game .pacman-div')
+  cells.forEach((cell, i) => {
+    if (existing.includes(i)){
+      cell.style.backgroundColor = 'black'
+    }
+  })
 
   cells.forEach(cell => {
     cell.addEventListener('mouseover', (e) => {

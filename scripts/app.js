@@ -365,7 +365,7 @@ function pacmanMove(nextPosFunc, rotation) {
           
           if (levels[currentLevel - 1].remainingDots === 0) winLevel()
         } else if (cells[pacman.pos].classList.contains('pill')) {
-          if (!mute) new Audio('music/pacman_eatfruit.wav').play()
+          if (!mute) new Audio('music/yass.mp3').play()
           cells[pacman.pos].classList.remove('pill')
           powerPillMode()
         }
@@ -450,7 +450,7 @@ function powerPillMode(){
 
 // if a collision happens  in powerPill mode, pacman eats ghosts
 function powerPillCollision(deadGhost){
-  if (!mute) new Audio('music/pacman_eatghost.wav').play()
+  if (!mute) new Audio('music/yomama.mp3').play()
   updateScore(100)
 
   // stop dead ghost and show the pacman points animation (+100)
@@ -477,12 +477,13 @@ function collision(ghost) {
 
   if (stage !== 'gamePlay' && stage !== 'powerPill') return
 
-  if (!mute) new Audio('music/pacman_death.wav').play()
-
+  
   if (stage === 'powerPill' && ghost.class === ghost.weakClass) {
     powerPillCollision(ghost)
     return
   }
+  
+  if (!mute) new Audio('music/wow.mp3').play()
 
   stage = 'collision'
   pacman.lives--
@@ -605,6 +606,11 @@ function gameStart(keyCode){
   if (keyCode === 13){
     
     if (startMenuOption === 'playGame') {
+      if (!mute) {
+        const music  = new Audio('music/puff.mp3')
+        music.play()
+        music.loop = true
+      }
       setTimeout(() => {
         selectors[0].style.transform = 'translateY(-2000px)'
         setTimeout(() => {
@@ -885,7 +891,7 @@ function levelEditor() {
 }
 
 let audioPlaying = false
-const audioFiles = ['dreams', 'theme', 'tranquility']
+const audioFiles = ['homebody']
 let audioIndex = Math.floor(Math.random() * audioFiles.length)
 const currentAudio = new Audio('music/' + audioFiles[audioIndex] + '.mp3')
 currentAudio.addEventListener('ended', nextSong)

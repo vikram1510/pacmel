@@ -314,7 +314,7 @@ main {
 
 
 .pacman {
-  background-image: url("../images/mel.GIF");
+  background-image: url("../images/melbig.GIF");
   background-repeat: no-repeat;
   background-size: contain;
   /* height: 50px; */
@@ -380,7 +380,7 @@ main {
   background-size: contain;
 }
 
-/* weak ghosts */
+/* ghosts and weak ghosts */
 .weak-ghost {
   background-image: url("../images/weak-ghost.gif");
   background-repeat: no-repeat;

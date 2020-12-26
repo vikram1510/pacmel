@@ -239,7 +239,7 @@ function setupControls() {
   
         if (e.keyCode === 39 || e.keyCode === 68) pacmanMove(nextPosRight, 'rotate(0deg)')
   
-        else if (e.keyCode === 37 || e.keyCode === 65) pacmanMove(nextPosLeft, 'rotate(180deg)')
+        else if (e.keyCode === 37 || e.keyCode === 65) pacmanMove(nextPosLeft, 'scaleX(-1)')
   
         else if (e.keyCode === 38 || e.keyCode === 87) pacmanMove(nextPosUp, 'rotate(270deg)')
   

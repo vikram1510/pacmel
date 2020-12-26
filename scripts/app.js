@@ -1,7 +1,7 @@
 /* eslint-disable brace-style */
 
 class Ghost {
-  constructor(name){
+  constructor(name, weakClass = 'weak-ghost'){
     this.name = name
     this.pos = null
     this.initialPos = null
@@ -10,6 +10,7 @@ class Ghost {
     this.moveId = null
     this.class = name
     this.speed = ghostSpeed
+    this.weakClass = weakClass
   }
 
   filterGhostMoves(posArray, move){
@@ -57,6 +58,7 @@ class Level {
     this.dotArray = dotArray
     this.pillsArray = pillsArray
     this.remainingDots = dotArray.length - pillsArray.length
+    // this.remainingDots = 20
     // this.remainingDots = 15
     this.initialPos = characterPositions
   }
@@ -88,7 +90,7 @@ let lastKeyPressed = null, bufferMove = null, powerPillId = null
 // debug flag to show grid numbers
 const showNumbers = false
 
-let ghostSpeed = 15
+const ghostSpeed = 15
 let score = 0, scoreSpan
 
 // Difficulty level stored in local storage
@@ -97,10 +99,16 @@ let difficulty = localStorage.getItem('difficulty')
 if (!difficulty) difficulty = 'medium'
 
 // Declare Ghosts
-const ghostRed = new Ghost('red-guy')
-const ghostPink = new Ghost('pinky')
-const ghostYellow = new Ghost('yellow')
-let ghosts = [ghostRed, ghostPink, ghostYellow]
+const ghostBhu1 = new Ghost('bhu1', 'weak-bhu1')
+const ghostPrags = new Ghost('prags', 'weak-prags')
+const ghostLaxmi = new Ghost('laxmi', 'weak-laxmi')
+const ghostJaren = new Ghost('jaren', 'weak-jaren')
+const ghostAsmi = new Ghost('asmi', 'weak-asmi')
+const ghostAni = new Ghost('ani', 'weak-ani')
+const ghostPrabs = new Ghost('prabs', 'weak-prabs')
+const ghostVik = new Ghost('vik', 'weak-vik')
+let ghosts = [ghostVik, ghostPrags, ghostBhu1]
+ghosts.forEach(g => console.log(g.weakClass))
 
 // This stage variable is changed throughout the game (e.g. gamePlay, gameOver etc.)
 let stage = 'gameStart Menu'
@@ -380,27 +388,27 @@ function setCharacterPositions(level){
   })
 }
 
-function setDifficulty() {
+// function setDifficulty() {
 
-  ghosts.forEach(ghost => cells[ghost.pos].firstChild.classList.remove(ghost.class))
-  if (difficulty === 'easy') {
-    ghosts = [ghostRed, ghostYellow]
-    ghostSpeed = 15
-    ghosts.forEach(ghost => ghost.speed = ghostSpeed)
-  }
-  else if (difficulty === 'medium'){
-    ghosts = [ghostRed, ghostYellow, ghostPink]
-    ghostSpeed = 15
-    ghosts.forEach(ghost => ghost.speed = ghostSpeed)
+//   ghosts.forEach(ghost => cells[ghost.pos].firstChild.classList.remove(ghost.class))
+//   if (difficulty === 'easy') {
+//     ghosts = [ghostRed, ghostYellow]
+//     ghostSpeed = 15
+//     ghosts.forEach(ghost => ghost.speed = ghostSpeed)
+//   }
+//   else if (difficulty === 'medium'){
+//     ghosts = [ghostRed, ghostYellow, ghostPink]
+//     ghostSpeed = 15
+//     ghosts.forEach(ghost => ghost.speed = ghostSpeed)
 
-  } else if (difficulty === 'hard'){
-    ghosts = [ghostRed, ghostYellow, ghostPink]
-    ghostSpeed = 10
-    ghosts.forEach(ghost => ghost.speed = ghostSpeed)
-  }
-  initialPlacement()
+//   } else if (difficulty === 'hard'){
+//     ghosts = [ghostRed, ghostYellow, ghostPink]
+//     ghostSpeed = 10
+//     ghosts.forEach(ghost => ghost.speed = ghostSpeed)
+//   }
+//   initialPlacement()
 
-}
+// }
 
 function stopCharacters() {
   ghosts.forEach(ghost => clearInterval(ghost.moveId))
@@ -413,8 +421,8 @@ function powerPillMode(){
   stage = 'powerPill'
   ghosts.forEach(ghost => {
     cells[ghost.pos].firstChild.classList.remove(ghost.name)
-    cells[ghost.pos].firstChild.classList.add('weak-ghost')
-    ghost.class = 'weak-ghost'
+    cells[ghost.pos].firstChild.classList.add(ghost.weakClass)
+    ghost.class = ghost.weakClass
     ghost.lastPos = null
     clearInterval(ghost.moveId)
     ghost.speed = 50
@@ -470,7 +478,7 @@ function collision(ghost) {
 
   if (!mute) new Audio('music/pacman_death.wav').play()
 
-  if (stage === 'powerPill' && ghost.class === 'weak-ghost') {
+  if (stage === 'powerPill' && ghost.class === ghost.weakClass) {
     powerPillCollision(ghost)
     return
   }
@@ -609,7 +617,7 @@ function gameStart(keyCode){
         }, 1000)
       }, 200)
 
-      setDifficulty()
+      // setDifficulty()
 
     }
     else if (startMenuOption === 'chooseDifficulty' && stage.includes('Menu')){
@@ -660,6 +668,9 @@ function winLevel(){
   currentLevel++
   const level =  levels[currentLevel - 1]
   stopCharacters()
+  if (currentLevel === 2){
+    ghosts = [ghostAni, ghostJaren, ghostLaxmi]
+  }
   setTimeout(() => {
     cells[pacman.pos].style.transform = 'translateY(-750px)'
     if (currentLevel <= levels.length) {

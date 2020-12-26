@@ -339,7 +339,7 @@ main {
 }
 
 .pinky {
-  background-image: url("../images/pinky.gif");
+  background-image: url("../images/bhu1ghost.GIF");
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -350,14 +350,8 @@ main {
   background-size: contain;
 }
 
-.weak-ghost {
-  background-image: url("../images/weak-ghost.gif");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .death {
-  background-image: url("../images/died.gif");
+  background-image: url("../images/meldied.GIF");
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -366,7 +360,6 @@ main {
   background-image: url("../images/dot.png");
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
 .pill {
@@ -382,7 +375,94 @@ main {
 }
 
 .pacman-life {
-  background-image: url("../images/pacman.png");
+  background-image: url("../images/mel.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* weak ghosts */
+.weak-ghost {
+  background-image: url("../images/weak-ghost.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.weak-bhu1 {
+  background-image: url("../images/bhu1weak.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.weak-prags {
+  background-image: url("../images/pragsweak.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.weak-vik {
+  background-image: url("../images/vikweak.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.weak-laxmi {
+  background-image: url("../images/laxmiweak.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.weak-jaren {
+  background-image: url("../images/jarenweak.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.weak-asmi {
+  background-image: url("../images/asmiweak.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.weak-ani {
+  background-image: url("../images/aniweak.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.weak-prabs {
+  background-image: url("../images/prabsweak.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.bhu1 {
+  background-image: url("../images/bhu1ghost.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.prags {
+  background-image: url("../images/pragsghost.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.vik {
+  background-image: url("../images/vikghost.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.laxmi {
+  background-image: url("../images/laxmighost.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.jaren {
+  background-image: url("../images/jarenghost.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.asmi {
+  background-image: url("../images/asmighost.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.ani {
+  background-image: url("../images/anighost.GIF");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.prabs {
+  background-image: url("../images/prabsghost.GIF");
   background-repeat: no-repeat;
   background-size: contain;
 }
